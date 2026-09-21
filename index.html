@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="Lifevault｜AI 財務生活管家">
+  <title>Lifevault｜AI 財務生活管家</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="logo">Lifevault</div>
+        <div class="date" id="todayText"></div>
+      </div>
+      <button class="icon-btn" id="notificationBtn" aria-label="通知">♧</button>
+    </header>
+
+    <main class="pages">
+      <!-- HOME -->
+      <section class="page active" id="page-home">
+        <div class="greeting">
+          <p class="muted">Good morning 👋</p>
+          <h1>今天也把錢<br>花在值得的地方。</h1>
+        </div>
+
+        <article class="hero-card">
+          <div class="hero-label">本月還可以花</div>
+          <div class="hero-number" id="remainingBig">NT$ 0</div>
+          <div class="hero-sub" id="daysLeftText">設定預算後開始追蹤</div>
+          <div class="progress light"><div id="budgetProgress"></div></div>
+          <div class="hero-row">
+            <span id="spentText">已支出 NT$ 0</span>
+            <span id="budgetText">預算 NT$ 0</span>
+          </div>
+        </article>
+
+        <div class="today-card">
+          <div>
+            <span class="muted small">今日建議最多花</span>
+            <strong id="dailyBudget">NT$ 0</strong>
+          </div>
+          <span class="today-icon">→</span>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">THIS MONTH</span>
+            <h2>支出概況</h2>
+          </div>
+          <button class="text-btn" data-page="expenses">查看全部</button>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart" id="categoryChart"></div>
+          <div class="legend" id="categoryLegend"></div>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">GOAL</span>
+            <h2>我的目標</h2>
+          </div>
+          <button class="text-btn" data-page="goals">查看</button>
+        </div>
+        <div id="homeGoals"></div>
+
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">AI INSIGHT</span>
+            <h2>Lifevault AI</h2>
+          </div>
+          <button class="text-btn" data-page="ai">分析</button>
+        </div>
+        <div class="ai-preview" id="homeAdvice"></div>
+      </section>
+
+      <!-- EXPENSES -->
+      <section class="page" id="page-expenses">
+        <div class="page-title">
+          <span class="eyebrow">MONEY</span>
+          <h1>記帳</h1>
+          <p>每一筆都知道錢去了哪裡。</p>
+        </div>
+
+        <div class="stats-row">
+          <div><span>本月支出</span><strong id="expensePageTotal">NT$ 0</strong></div>
+          <div><span>筆數</span><strong id="expenseCount">0</strong></div>
+        </div>
+
+        <div class="expense-list" id="expenseList"></div>
+      </section>
+
+      <!-- GOALS -->
+      <section class="page" id="page-goals">
+        <div class="page-title">
+          <span class="eyebrow">FUTURE</span>
+          <h1>目標</h1>
+          <p>把想要的生活，變成可以追蹤的數字。</p>
+        </div>
+        <div id="goalList"></div>
+      </section>
+
+      <!-- AI -->
+      <section class="page" id="page-ai">
+        <div class="page-title">
+          <span class="eyebrow">YOUR COACH</span>
+          <h1>AI 財務教練</h1>
+          <p>先從你的資料找出可以改善的地方。</p>
+        </div>
+
+        <div class="ai-big">
+          <div class="ai-orb">✦</div>
+          <div>
+            <strong>Lifevault AI</strong>
+            <p>目前根據你的預算與支出資料產生分析。</p>
+          </div>
+        </div>
+
+        <div class="advice-list" id="adviceList"></div>
+
+        <div class="ask-box">
+          <input id="questionInput" placeholder="例如：我這個月是不是花太多？">
+          <button id="askAI">問 AI</button>
+        </div>
+        <div class="answer" id="aiAnswer">輸入問題後，Lifevault 會根據目前的資料給你建議。</div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="page" id="page-profile">
+        <div class="page-title">
+          <span class="eyebrow">ACCOUNT</span>
+          <h1>我的</h1>
+          <p>管理你的 Lifevault 設定。</p>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar">L</div>
+          <div><strong>Lifevault User</strong><span>免費方案</span></div>
+        </div>
+
+        <div class="settings-card">
+          <button class="setting" id="openPlan"><span>💰 收入與預算</span><b>›</b></button>
+          <button class="setting" id="exportData"><span>📦 匯出資料</span><b>›</b></button>
+          <button class="setting" id="resetData"><span>↺ 重設所有資料</span><b>›</b></button>
+        </div>
+
+        <div class="pro-card">
+          <span class="eyebrow">LIFEVAULT PRO</span>
+          <h2>讓 AI 真正幫你管理生活。</h2>
+          <p>解鎖 AI 分析、無限目標、進階統計與雲端同步。</p>
+          <div class="pro-price">NT$99 <small>/ 月</small></div>
+          <button class="primary-btn" id="upgradeBtn">升級 Pro</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home"><span>⌂</span><small>首頁</small></button>
+      <button class="nav-item" data-page="expenses"><span>◴</span><small>記帳</small></button>
+      <button class="add-btn" id="addBtn">＋</button>
+      <button class="nav-item" data-page="goals"><span>◇</span><small>目標</small></button>
+      <button class="nav-item" data-page="ai"><span>✦</span><small>AI</small></button>
+    </nav>
+  </div>
+
+  <!-- ADD EXPENSE SHEET -->
+  <div class="modal hidden" id="expenseModal">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-head"><h2>新增支出</h2><button class="close" data-close="expenseModal">×</button></div>
+      <label>金額
+        <input id="amountInput" type="number" inputmode="decimal" placeholder="0">
+      </label>
+      <div class="category-grid" id="categoryGrid">
+        <button class="cat active" data-cat="飲食">🍜<span>飲食</span></button>
+        <button class="cat" data-cat="交通">🚗<span>交通</span></button>
+        <button class="cat" data-cat="購物">🛍️<span>購物</span></button>
+        <button class="cat" data-cat="娛樂">🎮<span>娛樂</span></button>
+        <button class="cat" data-cat="生活">🏠<span>生活</span></button>
+        <button class="cat" data-cat="其他">📦<span>其他</span></button>
+      </div>
+      <label>備註
+        <input id="noteInput" type="text" placeholder="例如：午餐">
+      </label>
+      <button class="primary-btn full" id="saveExpense">確認支出</button>
+    </div>
+  </div>
+
+  <!-- SETUP -->
+  <div class="modal hidden" id="planModal">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-head"><h2>收入與預算</h2><button class="close" data-close="planModal">×</button></div>
+      <label>每月收入
+        <input id="incomeInput" type="number" inputmode="decimal" placeholder="35000">
+      </label>
+      <label>本月可花預算
+        <input id="budgetInput" type="number" inputmode="decimal" placeholder="25000">
+      </label>
+      <button class="primary-btn full" id="savePlan">儲存</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
