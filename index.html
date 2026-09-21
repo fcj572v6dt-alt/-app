@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Lifevault｜AI 人生財務管家</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Lifevault</div>
+    <button id="upgradeTop" class="btn primary">升級 Pro</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">AI LIFE & MONEY MANAGER</p>
+      <h1>把你的生活，整理成一個清楚的計畫。</h1>
+      <p class="hero-text">記帳、預算、目標與 AI 建議，全部放在一起。</p>
+    </section>
+
+    <section class="grid cards">
+      <article class="card balance">
+        <span>本月剩餘預算</span>
+        <strong id="remaining">NT$ 0</strong>
+        <small id="remainingHint">設定月預算後開始使用</small>
+      </article>
+      <article class="card">
+        <span>本月支出</span>
+        <strong id="expenseTotal">NT$ 0</strong>
+        <small>所有支出紀錄</small>
+      </article>
+      <article class="card">
+        <span>今日可用</span>
+        <strong id="dailyBudget">NT$ 0</strong>
+        <small>依剩餘天數估算</small>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">QUICK SETUP</p>
+          <h2>你的本月計畫</h2>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>月收入
+          <input id="incomeInput" type="number" min="0" placeholder="35000">
+        </label>
+        <label>月預算
+          <input id="budgetInput" type="number" min="0" placeholder="25000">
+        </label>
+        <label>儲蓄目標
+          <input id="goalInput" type="number" min="0" placeholder="50000">
+        </label>
+        <button id="savePlan" class="btn primary">儲存計畫</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">EXPENSES</p>
+          <h2>新增支出</h2>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>金額
+          <input id="expenseAmount" type="number" min="1" placeholder="120">
+        </label>
+        <label>分類
+          <select id="expenseCategory">
+            <option>飲食</option>
+            <option>交通</option>
+            <option>娛樂</option>
+            <option>購物</option>
+            <option>帳單</option>
+            <option>其他</option>
+          </select>
+        </label>
+        <label>備註
+          <input id="expenseNote" type="text" placeholder="午餐">
+        </label>
+        <button id="addExpense" class="btn primary">＋ 新增</button>
+      </div>
+      <div id="expenseList" class="expense-list"></div>
+    </section>
+
+    <section class="panel goal-panel">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">GOAL</p>
+          <h2>儲蓄目標</h2>
+        </div>
+        <span id="goalProgressText">0%</span>
+      </div>
+      <div class="progress"><div id="goalProgress"></div></div>
+      <p id="goalText">設定目標後，Lifevault 會幫你追蹤進度。</p>
+    </section>
+
+    <section class="panel ai-panel">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">AI INSIGHT</p>
+          <h2>今日財務建議</h2>
+        </div>
+      </div>
+      <div id="aiAdvice" class="advice">先設定你的月預算與收入，我會根據資料給你簡單的建議。</div>
+      <button id="aiButton" class="btn secondary">產生今日建議</button>
+    </section>
+
+    <section class="pricing">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">PRO</p>
+          <h2>解鎖完整 Lifevault</h2>
+        </div>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <h3>Free</h3>
+          <div class="price">NT$0</div>
+          <p>基本記帳與目標追蹤</p>
+          <button class="btn secondary">目前方案</button>
+        </article>
+        <article class="price-card featured">
+          <span class="tag">推薦方案</span>
+          <h3>Pro</h3>
+          <div class="price">NT$99<span>/月</span></div>
+          <ul>
+            <li>AI 財務分析</li>
+            <li>無限目標與習慣</li>
+            <li>進階統計</li>
+            <li>完整歷史紀錄</li>
+          </ul>
+          <button id="upgradeButton" class="btn primary">升級 Pro</button>
+        </article>
+        <article class="price-card">
+          <h3>Annual</h3>
+          <div class="price">NT$890<span>/年</span></div>
+          <p>適合長期使用者</p>
+          <button id="annualButton" class="btn primary">選擇年訂閱</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Lifevault · Your life, organized.</footer>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
